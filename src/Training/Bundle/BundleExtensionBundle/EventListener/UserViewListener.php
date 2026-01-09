@@ -22,6 +22,6 @@ readonly class UserViewListener
                 'fullName' => $fullName,
             ],
         );
-        $event->getScrollData()->addSubBlockData(0, 0, $template);
+        $event->getScrollData()->addSubBlockData(0, 1, $template);
     }
 }
