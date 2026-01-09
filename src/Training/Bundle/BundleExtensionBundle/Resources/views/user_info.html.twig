@@ -1,0 +1,8 @@
+{% import '@OroUI/macros.html.twig' as UI %}
+
+{{ UI.renderProperty('Full Formatted Name', fullName|default('N/A')) }}
+{{ UI.renderProperty('Name Prefix', user.namePrefix|default('N/A')) }}
+{{ UI.renderProperty('First Name', user.firstName|default('N/A')) }}
+{{ UI.renderProperty('Middle Name', user.middleName|default('N/A')) }}
+{{ UI.renderProperty('Last Name', user.lastName|default('N/A')) }}
+{{ UI.renderProperty('Name Suffix', user.nameSuffix|default('N/A')) }}

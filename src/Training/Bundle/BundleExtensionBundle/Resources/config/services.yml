@@ -1,0 +1,13 @@
+services:
+    training_bundle_extension.provider.entity_name:
+        decorates: oro_locale.entity_name_provider
+        class: Training\Bundle\BundleExtensionBundle\Provider\EntityNameProvider
+        arguments:
+            - '@.inner'
+
+    training_bundle_extension.event_listener.user_view:
+        class: Training\Bundle\BundleExtensionBundle\EventListener\UserViewListener
+        arguments:
+            - '@training_bundle_extension.provider.entity_name'
+        tags:
+            - { name: kernel.event_listener, event: oro_ui.scroll_data.before.userView, method: onView }
