@@ -25,10 +25,9 @@ class AddUserNamingTypeRelation implements Migration, ExtendExtensionAwareInterf
             table: 'oro_user',
             associationName: 'user_naming_type',
             targetTable: 'user_naming_type',
-            targetTitleColumnName: 'id',
+            targetTitleColumnName: 'title',
             options: [
                 'extend' => ['owner' => ExtendScope::OWNER_CUSTOM],
-                'entity' => ['label' => 'user_naming_type'],
             ],
         );
     }

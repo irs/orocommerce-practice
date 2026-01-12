@@ -3,8 +3,6 @@
 namespace Training\Bundle\UserNamingBundle\Migrations\Schema;
 
 use Doctrine\DBAL\Schema\Schema;
-use Oro\Bundle\EntityBundle\EntityConfig\DatagridScope;
-use Oro\Bundle\EntityExtendBundle\EntityConfig\ExtendScope;
 use Oro\Bundle\MigrationBundle\Migration\Installation;
 use Oro\Bundle\MigrationBundle\Migration\QueryBag;
 
@@ -40,27 +38,9 @@ class TrainingUserNamingBundleInstaller implements Installation
     {
         $table = $schema->createTable('user_naming_type');
 
-        $table->addColumn('id', 'integer', [
-            'autoincrement' => true,
-        ]);
-        $table->addColumn('title', 'string', [
-            'length' => 64,
-//            'oro_options' => [
-//                'extend'    => ['is_extend' => true, 'owner' => ExtendScope::OWNER_CUSTOM],
-//                'datagrid'  => ['is_visible' => DatagridScope::IS_VISIBLE_TRUE],
-//                'form'      => ['type' => 'text'],
-//                'view'      => ['type' => 'text'],
-//            ],
-        ]);
-        $table->addColumn('format', 'string', [
-            'length' => 255,
-//            'oro_options' => [
-//                'extend'    => ['is_extend' => true, 'owner' => ExtendScope::OWNER_CUSTOM],
-//                'datagrid'  => ['is_visible' => DatagridScope::IS_VISIBLE_TRUE],
-//                'form'      => ['type' => 'text'],
-//                'view'      => ['type' => 'text'],
-//            ],
-        ]);
+        $table->addColumn('id', 'integer', ['autoincrement' => true]);
+        $table->addColumn('title', 'string', ['length' => 64]);
+        $table->addColumn('format', 'string', ['length' => 255]);
         $table->setPrimaryKey(['id']);
     }
 }
