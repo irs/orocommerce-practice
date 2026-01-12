@@ -19,11 +19,14 @@ class UserNamingType implements ExtendEntityInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: Types::INTEGER)]
+    #[ConfigField]
     public int $id;
 
     #[ORM\Column(type: Types::STRING, length: 64)]
+    #[ConfigField]
     public string $title;
 
     #[ORM\Column(type: Types::STRING, length: 255)]
+    #[ConfigField]
     public string $format;
 }

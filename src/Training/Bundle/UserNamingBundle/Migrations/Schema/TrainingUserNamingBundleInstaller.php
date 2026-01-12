@@ -45,21 +45,21 @@ class TrainingUserNamingBundleInstaller implements Installation
         ]);
         $table->addColumn('title', 'string', [
             'length' => 64,
-            'oro_options' => [
-                'extend'    => ['is_extend' => true, 'owner' => ExtendScope::OWNER_CUSTOM],
-                'datagrid'  => ['is_visible' => DatagridScope::IS_VISIBLE_TRUE],
-                'form'      => ['type' => 'text'],
-                'view'      => ['type' => 'text'],
-            ],
+//            'oro_options' => [
+//                'extend'    => ['is_extend' => true, 'owner' => ExtendScope::OWNER_CUSTOM],
+//                'datagrid'  => ['is_visible' => DatagridScope::IS_VISIBLE_TRUE],
+//                'form'      => ['type' => 'text'],
+//                'view'      => ['type' => 'text'],
+//            ],
         ]);
         $table->addColumn('format', 'string', [
             'length' => 255,
-            'oro_options' => [
-                'extend'    => ['is_extend' => true, 'owner' => ExtendScope::OWNER_CUSTOM],
-                'datagrid'  => ['is_visible' => DatagridScope::IS_VISIBLE_TRUE],
-                'form'      => ['type' => 'text'],
-                'view'      => ['type' => 'text'],
-            ],
+//            'oro_options' => [
+//                'extend'    => ['is_extend' => true, 'owner' => ExtendScope::OWNER_CUSTOM],
+//                'datagrid'  => ['is_visible' => DatagridScope::IS_VISIBLE_TRUE],
+//                'form'      => ['type' => 'text'],
+//                'view'      => ['type' => 'text'],
+//            ],
         ]);
         $table->setPrimaryKey(['id']);
     }
