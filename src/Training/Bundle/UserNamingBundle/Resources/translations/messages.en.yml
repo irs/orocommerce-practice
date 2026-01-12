@@ -1,4 +1,17 @@
 oro:
     user:
-      user_naming_type:
-          label: Preferred Form of Address
+        user_naming_type:
+            label: Preferred Form of Address
+
+training:
+    usernaming:
+        usernamingtype:
+            entity_description: Name formatting rules
+            entity_frontend_grid_all_view_label: Name formatting rules
+            entity_grid_all_view_label: Name formatting rules
+            entity_label: Name formatting rule
+            entity_plural_label: Name formatting rules
+
+        grid:
+            title: Title
+            format: Format
