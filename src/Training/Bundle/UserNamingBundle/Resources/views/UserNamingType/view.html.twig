@@ -1,0 +1,46 @@
+{% extends '@OroUI/actions/view.html.twig' %}
+{% import '@OroDataGrid/macros.html.twig' as dataGrid %}
+{% import '@OroUI/macros.html.twig' as UI %}
+
+{% oro_title_set({params : {"%entityLabel%": entity.title }}) %}
+
+{% block stats %}{% endblock %}
+
+{% block pageHeader %}
+    {% set breadcrumbs = {
+        'entity':      entity,
+        'indexPath':   path('training_user_naming_type_index'),
+        'indexLabel':  'training.usernaming.usernamingtype.entity_plural_label'|trans,
+        'entityTitle': entity.title,
+    } %}
+    {{ parent() }}
+{% endblock pageHeader %}
+
+{% block content_data %}
+    {% set namingInfo %}
+        {{ UI.renderProperty('training.usernaming.grid.title'|trans, entity.title|default('N/A')) }}
+        {{ UI.renderProperty('training.usernaming.grid.format'|trans, entity.format|default('N/A')) }}
+        {{ UI.renderProperty('training.usernaming.usernamingtype.example'|trans, user_name(sample_user)) }}
+    {% endset %}
+
+    {% set namingTypeUsers %}
+        {{ dataGrid.renderGrid('naming-type-users-grid', {'userNamingTypeId': entity.id}) }}
+    {% endset %}
+
+    {% set dataBlocks = [
+        {
+            'title': 'training.usernaming.usernamingtype.entity_information'|trans,
+            'class': 'active',
+            'subblocks': [{'data' : [namingInfo]}]
+        },
+        {
+            'title': 'training.usernaming.usernamingtype.entity_users'|trans,
+            'class': 'active',
+            'subblocks': [{'data' : [namingTypeUsers]}]
+        }
+    ] %}
+
+    {% set id = 'payment-term-view' %}
+    {% set data = { 'dataBlocks': dataBlocks } %}
+    {{ parent() }}
+{% endblock content_data %}

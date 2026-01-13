@@ -8,10 +8,14 @@ use Oro\Bundle\EntityConfigBundle\Metadata\Attribute\Config;
 use Oro\Bundle\EntityConfigBundle\Metadata\Attribute\ConfigField;
 use Oro\Bundle\EntityExtendBundle\Entity\ExtendEntityInterface;
 use Oro\Bundle\EntityExtendBundle\Entity\ExtendEntityTrait;
+use Symfony\Component\Form\FormTypeInterface;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'user_naming_type')]
-#[Config]
+#[Config(
+    routeName: 'training_user_naming_type_index',
+    routeView: 'training_user_naming_type_view',
+)]
 class UserNamingType implements ExtendEntityInterface
 {
     use ExtendEntityTrait;

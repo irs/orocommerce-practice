@@ -1,1 +1,7 @@
 services:
+    training.user_naming.twig.user_name_extension:
+        class: Training\Bundle\UserNamingBundle\Twig\UserNameExtension
+        arguments:
+            - '@training_bundle_extension.provider.entity_name'
+        tags:
+            - { name: twig.extension }

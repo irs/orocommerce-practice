@@ -11,9 +11,19 @@ datagrids:
                     - t.format
                 from:
                     - { table: 'Training\Bundle\UserNamingBundle\Entity\UserNamingType', alias: t }
+
+        actions:
+            view:
+                type: navigate
+                label: oro.grid.action.view
+                icon: eye
+                link: view_link
+                rowAction:  true
+
         columns:
             title:
                 label: training.usernaming.grid.title
+
             format:
                 label: training.usernaming.grid.format
                 type: twig
@@ -22,3 +32,68 @@ datagrids:
 
         properties:
             id: ~
+            view_link:
+                type: url
+                route: training_user_naming_type_view
+                params: [ id ]
+
+    naming-type-users-grid:
+        options:
+            entityHint: oro.user.entity_plural_label
+            entity_pagination: true
+
+        mass_actions:
+            delete:
+                disabled: true
+
+        acl_resource: oro_user_user_view
+        source:
+            type: orm
+            query:
+                select:
+                    - u.id
+                    - u.email
+                    - u.firstName
+                    - u.lastName
+                    - u.createdAt
+                    - u.updatedAt
+                    - u.enabled
+                from:
+                    - { table: 'Oro\Bundle\UserBundle\Entity\User', alias: u }
+                where:
+                    and:
+                        - u.user_naming_type = :userNamingTypeId
+
+            bind_parameters:
+                - userNamingTypeId
+
+            hints:
+                - HINT_TRANSLATABLE
+
+        columns:
+            firstName:
+                label: oro.user.first_name.label
+
+            lastName:
+                label: oro.user.last_name.label
+
+            email:
+                label: oro.user.email.label
+
+            enabled:
+                label: oro.user.enabled.label
+                frontend_type: select
+                editable: false
+                inline_editing:
+                    enable: false
+                choices:
+                    oro.user.datagrid.user.columns.disabled: 0
+                    oro.user.datagrid.user.columns.enabled: 1
+
+            createdAt:
+                label: oro.ui.created_at
+                frontend_type: datetime
+
+            updatedAt:
+                label: oro.ui.updated_at
+                frontend_type: datetime

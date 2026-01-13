@@ -11,7 +11,12 @@ training:
             entity_grid_all_view_label: Name formatting rules
             entity_label: Name formatting rule
             entity_plural_label: Name formatting rules
+            entity_information: General information
+            entity_users: Related users
+            example: Example
 
         grid:
             title: Title
-            format: Format
+            format: Naming Format
+
+        saved_message: Name formatting rule saved successfully
