@@ -18,7 +18,7 @@ use Symfony\Component\Form\FormTypeInterface;
     defaultValues: [
         'security' => [
             'type' => 'ACL',
-            'permissions' => 'VIEW;DELETE',
+            'permissions' => 'VIEW;DELETE;CREATE',
             'group_name' => '',
             'category' => 'account_management',
         ],
