@@ -1,5 +1,6 @@
 datagrids:
     user-naming-type-grid:
+        acl_resource: training_user_namig_type_view
         options:
             entityHint: training.usernaming.usernamingtype.entity_plural_label
         source:

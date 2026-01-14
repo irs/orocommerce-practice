@@ -9,5 +9,6 @@ services:
         class: Training\Bundle\BundleExtensionBundle\EventListener\UserViewListener
         arguments:
             - '@training_bundle_extension.provider.entity_name'
+            - '@security.authorization_checker'
         tags:
             - { name: kernel.event_listener, event: oro_ui.scroll_data.before.userView, method: onView }

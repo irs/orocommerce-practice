@@ -15,6 +15,14 @@ use Symfony\Component\Form\FormTypeInterface;
 #[Config(
     routeName: 'training_user_naming_type_index',
     routeView: 'training_user_naming_type_view',
+    defaultValues: [
+        'security' => [
+            'type' => 'ACL',
+            'permissions' => 'VIEW;DELETE',
+            'group_name' => '',
+            'category' => 'account_management',
+        ],
+    ],
 )]
 class UserNamingType implements ExtendEntityInterface
 {

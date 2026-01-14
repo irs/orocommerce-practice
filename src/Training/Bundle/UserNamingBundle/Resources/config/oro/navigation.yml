@@ -4,6 +4,7 @@ navigation:
             user_naming_types:
                 label: training.usernaming.usernamingtype.entity_plural_label
                 route: training_user_naming_type_index
+                acl_resource_id: training_user_namig_type_view
                 position: 5
 
         tree:

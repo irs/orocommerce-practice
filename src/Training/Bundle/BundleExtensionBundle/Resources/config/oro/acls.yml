@@ -1,0 +1,5 @@
+acls:
+    training_user_naming_show:
+        label: training.usernaming.show_on_user_profile
+        type: action
+        category: "account_management"

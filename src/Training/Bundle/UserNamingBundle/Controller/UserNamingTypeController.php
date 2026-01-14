@@ -2,6 +2,8 @@
 
 namespace Training\Bundle\UserNamingBundle\Controller;
 
+use Oro\Bundle\SecurityBundle\Attribute\Acl;
+use Oro\Bundle\SecurityBundle\Attribute\AclAncestor;
 use Oro\Bundle\UserBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,6 +23,7 @@ class UserNamingTypeController extends AbstractController
 
     #[Route(path: '/view/{id}', name: 'training_user_naming_type_view', requirements: ['id' => '\d+'])]
     #[Template]
+    #[AclAncestor('training_user_namig_type_view')]
     public function viewAction(UserNamingType $type): array
     {
         return [

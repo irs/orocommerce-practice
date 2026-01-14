@@ -1,0 +1,5 @@
+acls:
+    training_user_namig_type_view:
+        type: entity
+        class: Training\Bundle\UserNamingBundle\Entity\UserNamingType
+        permission: VIEW
