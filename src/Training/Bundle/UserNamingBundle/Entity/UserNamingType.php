@@ -41,4 +41,9 @@ class UserNamingType implements ExtendEntityInterface
     #[ORM\Column(type: Types::STRING, length: 255)]
     #[ConfigField]
     public string $format;
+
+    public function __toString(): string
+    {
+        return $this->title;
+    }
 }

@@ -1,0 +1,7 @@
+services:
+    training.workflow.transition.reset_user_name:
+        class: Training\Bundle\WorkflowBundle\Transition\ResetUserNameTransition
+        arguments:
+            - '@doctrine.orm.entity_manager'
+        tags:
+            - { name: 'oro_workflow.transition_service' }

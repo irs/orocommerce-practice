@@ -1,0 +1,59 @@
+workflows:
+        user_naming_flow:
+        entity: Oro\Bundle\UserBundle\Entity\User
+        entity_attribute: user
+        defaults:
+            active: true
+        attributes:
+            name_prefix:
+                property_path: user.namePrefix
+            first_name:
+                property_path: user.firstName
+            middle_name:
+                property_path: user.middleName
+            last_name:
+                property_path: user.lastName
+            name_suffix:
+                property_path: user.nameSuffix
+            naming_type:
+                property_path: user.userNamingType
+                type: entity
+                options:
+                    class: Training\Bundle\UserNamingBundle\Entity\UserNamingType
+        steps:
+            name_not_set:
+                allowed_transitions:
+                    - set_name
+            name_set:
+                allowed_transitions:
+                    - set_naming_type
+                    - reset_name
+            naming_type_set:
+                is_final: true
+                allowed_transitions:
+                    - reset_name
+        transitions:
+            reset_name:
+                is_start: true
+                step_to: name_not_set
+                transition_service: training.workflow.transition.reset_user_name
+            set_name:
+                step_to: name_set
+                form_options: 
+                    attribute_fields:
+                        name_prefix: ~
+                        first_name:
+                            options:
+                                constraints:
+                                    -   NotBlank: ~
+                        middle_name: ~
+                        last_name: ~
+                        name_suffix: ~
+            set_naming_type:
+                step_to: naming_type_set
+                form_options:
+                    attribute_fields:
+                        naming_type:
+                            options:
+                                constraints:
+                                    -   NotBlank: ~

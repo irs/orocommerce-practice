@@ -1,0 +1,30 @@
+oro:
+    workflow:
+        user_naming_flow:
+            label: 'Naming'
+            step:
+                name_set:
+                    label: 'Name is set'
+                name_not_set:
+                    label: 'Name is not set'
+                naming_type_set:
+                    label: 'Preferred form of address is set'
+            attribute:
+                naming_type:
+                    label: 'Preferred form of address'
+            transition:
+                set_name:
+                    label: 'Set name'
+                    button_label: 'Set name'
+                    button_title: 'Set name'
+                    warning_message: 'Add user name'
+                reset_name:
+                    label: 'Reset name'
+                    button_label: 'Reset name'
+                    button_title: 'Reset name'
+                    warning_message: 'Are you sure you want to reset user name?'
+                set_naming_type:
+                    label: 'Choose preferred form of address'
+                    button_label: 'Choose preferred form of address'
+                    button_title: 'Choose preferred form of address'
+#                    warning_message: 'Choose preferred form of user address.'
