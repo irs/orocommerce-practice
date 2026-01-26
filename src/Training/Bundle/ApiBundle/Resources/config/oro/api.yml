@@ -1,0 +1,20 @@
+api:
+    entities:
+        Training\Bundle\UserNamingBundle\Entity\UserNamingType:
+            fields:
+                nameExample:
+                    data_type: string
+                    meta_property: true
+
+            filters:
+                exclusion_policy: all
+                fields:
+                    title:
+                        exclude: false
+                        data_type: string
+
+            sorters:
+                exclusion_policy: all
+                fields:
+                    title:
+                        exclude: false

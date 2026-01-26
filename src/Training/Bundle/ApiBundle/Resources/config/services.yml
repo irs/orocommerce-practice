@@ -1,0 +1,8 @@
+services:
+    training.api.processor.user_name_example:
+        class: Training\Bundle\ApiBundle\Processor\UserNameExampleProcessor
+        arguments:
+            - '@training_bundle_extension.provider.entity_name'
+        tags:
+            - { name: oro.api.processor, action: get, group: finalize, priority: 10 }
+            - { name: oro.api.processor, action: get_list, group: finalize, priority: 10 }
