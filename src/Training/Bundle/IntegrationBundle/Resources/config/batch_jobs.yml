@@ -1,0 +1,14 @@
+connector:
+    name: oro_importexport
+    jobs:
+        user_naming_types_import:
+            title: "Imports user naming types"
+            type: import
+            steps:
+                import:
+                    title: import
+                    class: Oro\Bundle\BatchBundle\Step\ItemStep
+                    services:
+                        reader: training.provider.connector
+                        processor: oro_importexport.processor.import_delegate
+                        writer: oro_integration.writer.persistent_batch_writer

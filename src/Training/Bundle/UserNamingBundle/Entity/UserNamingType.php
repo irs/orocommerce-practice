@@ -35,7 +35,7 @@ class UserNamingType implements ExtendEntityInterface
     public int $id;
 
     #[ORM\Column(type: Types::STRING, length: 64)]
-    #[ConfigField]
+    #[ConfigField(defaultValues: ['importexport' => ['identity' => true]])]
     public string $title;
 
     #[ORM\Column(type: Types::STRING, length: 255)]

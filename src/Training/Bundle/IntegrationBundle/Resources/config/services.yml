@@ -1,0 +1,25 @@
+services:
+    training.form_type.user_naming.transport:
+        class: Training\Bundle\IntegrationBundle\Form\UserNamingFormType
+        tags:
+            - { name: form.type, alias: training_user_naming_transport }
+
+    training.provider.channel:
+        class: Training\Bundle\IntegrationBundle\Provider\Channel
+        tags:
+            - { name: oro_integration.channel, type: training }
+
+    training.provider.transport:
+        class: Training\Bundle\IntegrationBundle\Provider\Transport
+        parent: oro_integration.transport.rest.abstract_transport
+        tags:
+            - { name: oro_integration.transport, type: training, channel_type: training }
+
+    training.provider.connector:
+        class: Training\Bundle\IntegrationBundle\Provider\Connector
+        arguments:
+            - '@oro_importexport.context_registry'
+            - '@oro_integration.logger.strategy'
+            - '@oro_integration.provider.connector_context_mediator'
+        tags:
+            - { name: oro_integration.connector, type: training, channel_type: training }

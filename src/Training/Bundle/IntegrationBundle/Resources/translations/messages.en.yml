@@ -1,0 +1,13 @@
+training:
+    channel:
+        label: User naming
+
+    connector:
+        label: User naming connector
+
+    transport:
+        label: User naming transport
+        form:
+            url:
+                label:   URL
+                tooltip: User naming type source URL
