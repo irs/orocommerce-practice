@@ -32,15 +32,48 @@ class UserNamingType implements ExtendEntityInterface
     #[ORM\GeneratedValue]
     #[ORM\Column(type: Types::INTEGER)]
     #[ConfigField]
-    public int $id;
+    private ?int $id = null;
 
     #[ORM\Column(type: Types::STRING, length: 64)]
     #[ConfigField(defaultValues: ['importexport' => ['identity' => true]])]
-    public string $title;
+    private ?string $title = null;
 
     #[ORM\Column(type: Types::STRING, length: 255)]
     #[ConfigField]
-    public string $format;
+    private ?string $format = null;
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+        return $this;
+    }
+
+    public function getFormat(): string
+    {
+        return $this->format;
+    }
+
+    public function setFormat(string $format): self
+    {
+        $this->format = $format;
+        return $this;
+    }
 
     public function __toString(): string
     {
