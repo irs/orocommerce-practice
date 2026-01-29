@@ -10,28 +10,38 @@ use Training\Bundle\UserNamingBundle\Entity\UserNamingType;
 
 readonly class UserNameExampleProcessor implements ProcessorInterface
 {
+    private User $sampleUser;
+
     public function __construct(private EntityNameProvider $nameProvider)
     {
+        $this->sampleUser = new User()
+            ->setNamePrefix('Dr.')
+            ->setFirstName('John')
+            ->setMiddleName('Michael')
+            ->setLastName('Doe')
+            ->setNameSuffix('Jr.');
     }
 
     public function process(ContextInterface $context)
     {
         $result = $context->getResult();
 
-        foreach ($result as &$userNaming) {
-            $type = new UserNamingType();
-            $type->format = $userNaming['format'];
-
-            $user = new User()
-                ->setNamePrefix('Dr.')
-                ->setFirstName('John')
-                ->setMiddleName('Michael')
-                ->setLastName('Doe')
-                ->setNameSuffix('Jr.')
-                ->set('user_naming_type', $type);
-
-            $userNaming['nameExample'] = $this->nameProvider->getName(null, null, $user);
+        if (isset($result['id'])) {
+            $this->addExample($result);
+        } else if (is_iterable($result)) {
+            foreach ($result as &$userNaming) {
+                $this->addExample($userNaming);
+            }
         }
         $context->setResult($result);
+    }
+
+    private function addExample(array &$userNaming): void
+    {
+        $type = new UserNamingType();
+        $type->setFormat($userNaming['format']);
+        $this->sampleUser->set('user_naming_type', $type);
+
+        $userNaming['nameExample'] = $this->nameProvider->getName(null, null, $this->sampleUser);
     }
 }
